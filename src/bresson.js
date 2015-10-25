@@ -2,4 +2,4 @@
 
 angular.module('bresson', [])
   .run(Config)
-  .directive('bresson-datepicker', DatePickerDirective);
+  .directive('bressonDatepicker', DatePickerDirective);
