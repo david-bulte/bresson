@@ -1,44 +1,29 @@
 # bresson
 
-Does the world need more date pickers? Probably not. We have all used JQuery's' and
+Does the world need another date picker? Probably not. We have all used [JQuery][jquery]'s' and
 if you're operating in angular territory, chances are you're familiar with the ones from
 [angular ui][ui] or [angularstrap][strap].
 
-[ui]:https://github.com/angular-ui/bootstrap/tree/master/src/datepicker
-[strap]:http://mgcrea.github.io/angular-strap/#/datepickers
-
 Nothing's wrong with those, but lately, I tend to use HTML5's date input. It's simple to
-use, looks good (also on mobile) and frankly, gives me a lot less configuration troubles then some of the 
+use, looks good (also on mobile) and frankly, gives me a lot less configuration troubles than some of the 
 other options (working with dates can be such a pain in webland). Unfortunately not all browsers 
 support this element. 
 
-But then I have to , styling, ... more features then...
-https://github.com/angular-ui/bootstrap/tree/master/src/datepicker
-Using a datepicker like
-Hence the use of datepickers like ... from angular UI...
-In spite of the powerfullness of some of these date pickers, I have a couple of issues with them:
-find myself messing with dates
-- overly complex
-- difficult to style
-- too much functionality. Which is nice, but if you'd use a custom date picker as fallback for the default date input,
-you don't want your fallback to look fancier than your ...
-
-
+Using one of the aforementioned date pickers as a fallback could be an option, but then I have to do
+the extra configuration, styling etc... anyway, and also I don't like it when my fallback solution is 
+looking fancier then my default sollution.
 
 Hence this simple, minimalistic date input, using vanilla select elements to pick days, months and years. 
 
-Here's what it looks like'
+Here's what it looks like:
 
-todo img
+![screenshot](./bresson-screenshot.png)
 
 I told you it was simple :)
 
 ## Getting Started
 
 Download the [production version][min] or the [development version][max].
-
-[min]: https://rawgit.com/david-bulte/bresson/master/dist/bresson.min.js
-[max]: https://rawgit.com/david-bulte/bresson/master/dist/bresson.js
 
 In your index.html:
 
@@ -95,5 +80,10 @@ you'd like to override this, you can pass the 'dayBeforeMonth' attribute:
 [Pickpocket][pickpocket] is a minimalistic account of 
 Ken Loach, Dogma
 
+[min]: https://rawgit.com/david-bulte/bresson/master/dist/bresson.min.js
+[max]: https://rawgit.com/david-bulte/bresson/master/dist/bresson.js
+[jquery]:https://jqueryui.com/datepicker/
+[ui]:https://github.com/angular-ui/bootstrap/tree/master/src/datepicker
+[strap]:http://mgcrea.github.io/angular-strap/#/datepickers
 [bresson]:https://upload.wikimedia.org/wikipedia/commons/1/19/Robertbressonportrait.png
 [pickpocket]:https://en.wikipedia.org/wiki/Pickpocket_(film)
