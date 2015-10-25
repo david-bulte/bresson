@@ -89,9 +89,11 @@ you'd like to override this, you can pass the 'dayBeforeMonth' attribute:
 
 ## Robert Bresson
 
+![Robert Bresson](https://upload.wikimedia.org/wikipedia/commons/1/19/Robertbressonportrait.png)
+
 [Robert Bresson][bresson] was a French film maker, a most notic member of the Nouvelle Vague. His master piece,
 [Pickpocket][pickpocket] is a minimalistic account of 
-Ken Loach, Dogma.
+Ken Loach, Dogma
 
 [bresson]:https://upload.wikimedia.org/wikipedia/commons/1/19/Robertbressonportrait.png
 [pickpocket]:https://en.wikipedia.org/wiki/Pickpocket_(film)
