@@ -1,6 +1,5 @@
 'use strict';
 
-//example use: <datepicker model-date="afwezighedenCtrl.datetest" from-year="2000" to-year="2300"></datepicker>
 function DatePickerDirective() {
 
   return {
@@ -9,7 +8,8 @@ function DatePickerDirective() {
     scope: {
       modelDate: '=',
       fromYear: '=',
-      toYear: '='
+      toYear: '=',
+      dayBeforeMonth: '='
     },
     controller: DatePickerController,
     controllerAs: 'ctrl',
