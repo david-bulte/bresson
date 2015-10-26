@@ -45,11 +45,20 @@ In its simplest form, you use it like so:
 <bresson-datepicker model-date="ctrl.currentDate"/>
 ```
 
+Note that *if* the browser supports HTML5's date input, that one will be used, otherwise we'll fallback to the
+bresson date selector. Should you prefer to always use the fallback, you should set the 'tryDateInput'
+attribute to false:
+
+```html
+<bresson-datepicker model-date="ctrl.currentDate" try-date-input="false"/>
+```
+
 By default, the 'years' select will offer 100 years, 50 before and 50 after the given modelDate. You can change this
 by specifying a 'fromYear' and 'toYear' attribute:
 
 ```html
 <bresson-datepicker model-date="ctrl.currentDate" 
+                    try-date-input="false"
                     from-year="2000" 
                     to-year="2100"/>
 ```
@@ -62,6 +71,7 @@ you'd like to override this, you can pass the 'dayBeforeMonth' attribute:
 
 ```html
 <bresson-datepicker model-date="ctrl.currentDate" 
+                    try-date-input="false"
                     day-before-month="true"/>
 ```
 
@@ -72,10 +82,11 @@ you'd like to override this, you can pass the 'dayBeforeMonth' attribute:
 
 ## Robert Bresson
 
-![Robert Bresson](https://upload.wikimedia.org/wikipedia/commons/1/19/Robertbressonportrait.png)
+[![Robert Bresson](https://upload.wikimedia.org/wikipedia/commons/1/19/Robertbressonportrait.png)][bresson]
+
 <!--
-[Robert Bresson][bresson] was a French film maker, along with Godard the most  member of the Nouvelle Vague. His master piece,
-[Pickpocket][pickpocket] is a minimalistic account of 
+[Robert Bresson][bresson] was a French film maker, member of the Nouvelle Vague. 
+[Pickpocket][pickpocket], his masterpiece, is a minimalistic account of 
 Ken Loach, Dogma
 -->
 [min]: https://rawgit.com/david-bulte/bresson/master/dist/bresson.min.js
@@ -83,5 +94,5 @@ Ken Loach, Dogma
 [jquery]:https://jqueryui.com/datepicker/
 [ui]:https://github.com/angular-ui/bootstrap/tree/master/src/datepicker
 [strap]:http://mgcrea.github.io/angular-strap/#/datepickers
-[bresson]:https://upload.wikimedia.org/wikipedia/commons/1/19/Robertbressonportrait.png
+[bresson]:https://en.wikipedia.org/wiki/Robert_Bresson
 [pickpocket]:https://en.wikipedia.org/wiki/Pickpocket_(film)
