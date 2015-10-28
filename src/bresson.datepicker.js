@@ -6,7 +6,7 @@ function DatePickerDirective() {
     restrict: 'E',
     templateUrl: 'templates/datepicker.html',
     scope: {
-      modelDate: '=',
+      modelDate: '=date',
       fromYear: '=',
       toYear: '=',
       dayBeforeMonth: '=',
