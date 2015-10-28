@@ -1,6 +1,6 @@
 /**
  * bresson
- * @version v0.0.1 - 2015-10-26
+ * @version v0.0.1 - 2015-10-28
  * @link https://github.com/david-bulte/bresson
  * @author  <>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -18,19 +18,19 @@ function Config($templateCache) {
   $templateCache.put('templates/datepicker.html',
     '<any ng-switch="ctrl.viaDateInput">' +
 
-      '<input type="date" ng-model="ctrl.modelDate" ng-switch-when="true">' +
+      '<input type="date" ng-model="ctrl.modelDate" ng-switch-when="true" class="{{ctrl.brAttributes.class}}" placeholder="{{ctrl.brAttributes.placeholder}}">' +
 
-      '<any ng-switch-default ng-switch="ctrl.dayBeforeMonth">' +
-        '<span ng-switch-when="true">' +
-          '<select ng-model="ctrl.viewDate.day.id" ng-options="day.label as day.id for day in ctrl.days" ng-change="ctrl.dayChanged()"></select> ' +
-          '<select ng-model="ctrl.viewDate.month.id" ng-options="month.label as month.id for month in ctrl.months" ng-change="ctrl.monthOrYearChanged()"></select> ' +
-          '<select ng-model="ctrl.viewDate.year.id" ng-options="year.label as year.id for year in ctrl.years" ng-change="ctrl.monthOrYearChanged()"></select>' +
-        '</span>' +
-        '<span ng-switch-default>' +
-            '<select ng-model="ctrl.viewDate.month.id" ng-options="month.label as month.id for month in ctrl.months" ng-change="ctrl.monthOrYearChanged()"></select> ' +
-            '<select ng-model="ctrl.viewDate.day.id" ng-options="day.label as day.id for day in ctrl.days" ng-change="ctrl.dayChanged()"></select> ' +
-            '<select ng-model="ctrl.viewDate.year.id" ng-options="year.label as year.id for year in ctrl.years" ng-change="ctrl.monthOrYearChanged()"></select>' +
-        '</span>' +
+      '<any ng-switch-default ng-switch="ctrl._dayBeforeMonth">' +
+        '<any ng-switch-when="true">' +
+          '<select class="{{ctrl.brAttributes.class}}" ng-model="ctrl.viewDate.day.id" ng-options="day.label as day.id for day in ctrl.days" ng-change="ctrl.dayChanged()"></select> ' +
+          '<select class="{{ctrl.brAttributes.class}}" ng-model="ctrl.viewDate.month.id" ng-options="month.label as month.id for month in ctrl.months" ng-change="ctrl.monthOrYearChanged()"></select> ' +
+          '<select class="{{ctrl.brAttributes.class}}" ng-model="ctrl.viewDate.year.id" ng-options="year.label as year.id for year in ctrl.years" ng-change="ctrl.monthOrYearChanged()"></select>' +
+        '</any>' +
+        '<any ng-switch-default>' +
+          '<select class="{{ctrl.brAttributes.class}}" ng-model="ctrl.viewDate.month.id" ng-options="month.label as month.id for month in ctrl.months" ng-change="ctrl.monthOrYearChanged()"></select> ' +
+          '<select class="{{ctrl.brAttributes.class}}" ng-model="ctrl.viewDate.day.id" ng-options="day.label as day.id for day in ctrl.days" ng-change="ctrl.dayChanged()"></select> ' +
+          '<select class="{{ctrl.brAttributes.class}}" ng-model="ctrl.viewDate.year.id" ng-options="year.label as year.id for year in ctrl.years" ng-change="ctrl.monthOrYearChanged()"></select>' +
+        '</any>' +
       '</any>' +
 
     '</any>');
@@ -47,11 +47,12 @@ function DatePickerDirective() {
     restrict: 'E',
     templateUrl: 'templates/datepicker.html',
     scope: {
-      modelDate: '=',
+      modelDate: '=date',
       fromYear: '=',
       toYear: '=',
       dayBeforeMonth: '=',
-      tryDateInput: '='
+      tryDateInput: '=',
+      brAttributes: '='
     },
     controller: DatePickerController,
     controllerAs: 'ctrl',
@@ -63,16 +64,18 @@ function DatePickerDirective() {
 function DatePickerController() {
 
   this.viaDateInput = (this.tryDateInput === undefined || this.tryDateInput === true) && dateInputSupported();
+  var _fromYear = this.fromYear;
+  var _toYear = this.toYear;
 
   if (this.viaDateInput) {
     return;
   }
 
-  if (!this.fromYear != !this.toYear) {
+  if (!_fromYear != !_toYear) {
     throw 'bresson: when specifying fromYear you should als specify toYear';
   }
 
-  if (this.fromYear && this.modelDate && (this.modelDate.getFullYear() < this.fromYear || this.modelDate.getFullYear() > this.toYear)) {
+  if (_fromYear && this.modelDate && (this.modelDate.getFullYear() < _fromYear || this.modelDate.getFullYear() > _toYear)) {
     throw 'bresson: given modelDate does not fall between given fromYear and toYear';
   }
 
@@ -80,9 +83,9 @@ function DatePickerController() {
     this.modelDate = new Date();
   }
 
-  if (!this.fromYear) {
-    this.fromYear = this.modelDate.getFullYear() - 50;
-    this.toYear = this.modelDate.getFullYear() + 50;
+  if (!_fromYear) {
+    _fromYear = this.modelDate.getFullYear() - 50;
+    _toYear = this.modelDate.getFullYear() + 50;
   }
 
   this.viewDate = {
@@ -96,7 +99,7 @@ function DatePickerController() {
 
   this.days = options(1, daysInMonth(this.modelDate.getMonth() + 1, this.modelDate.getFullYear()));
   this.months = options(1, 12);
-  this.years = options(this.fromYear, this.toYear);
+  this.years = options(_fromYear, _toYear);
 
   if (this.dayBeforeMonth === undefined) {
     var now = new Date(Date.UTC(1972, 5, 9, 0, 0));
