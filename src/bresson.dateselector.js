@@ -93,7 +93,7 @@ function daysInMonth(month, year) {
 }
 
 //cf. http://stackoverflow.com/questions/10193294/how-can-i-tell-if-a-browser-supports-input-type-date
-function dateSelectorSupported() {
+function dateInputSupported() {
   var input = document.createElement('input');
   input.setAttribute('type','date');
 
