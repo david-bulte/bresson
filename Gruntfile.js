@@ -59,7 +59,7 @@ module.exports = function(grunt) {
       },
       dist: {
         //src: ['<%= yo.src %>/<%= pkg.name %>.js'],
-        src: ['<%= yo.src %>/bresson.js', '<%= yo.src %>/bresson.config.js', '<%= yo.src %>/bresson.datepicker.js'],
+        src: ['<%= yo.src %>/bresson.js', '<%= yo.src %>/bresson.config.js', '<%= yo.src %>/bresson.dateselector.js'],
         dest: '<%= yo.dist %>/<%= pkg.name %>.js'
       }
     },
