@@ -20,7 +20,9 @@ function DateSelectorDirective() {
 
 }
 
-function DateSelectorController() {
+function DateSelectorController($scope) {
+
+  var self = this;
 
   this.viaDateInput = (this.tryDateInput === undefined || this.tryDateInput === true) && dateInputSupported();
   var _fromYear = this.fromYear;
@@ -60,10 +62,13 @@ function DateSelectorController() {
   this.months = options(1, 12);
   this.years = options(_fromYear, _toYear);
 
-  if (this.dayBeforeMonth === undefined) {
-    var now = new Date(Date.UTC(1972, 5, 9, 0, 0));
-    this.dayBeforeMonth = '09/05/1972' === now.toLocaleDateString();
-  }
+  $scope.$watch('ctrl.dayBeforeMonth', function(newVal) {
+    self._dayBeforeMonth = self.dayBeforeMonth;
+    if (self._dayBeforeMonth === undefined) {
+      var now = new Date(Date.UTC(1972, 5, 9, 0, 0));
+      self._dayBeforeMonth = '09/05/1972' === now.toLocaleDateString();
+    }
+  });
 
   this.dayChanged = function () {
     this.modelDate = this.viewDate.toDate();
@@ -79,6 +84,8 @@ function DateSelectorController() {
   };
 
 }
+
+DateSelectorController.$inject = ['$scope'];
 
 function options(from, to) {
   var result = [];
