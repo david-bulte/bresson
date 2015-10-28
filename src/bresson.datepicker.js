@@ -10,7 +10,8 @@ function DatePickerDirective() {
       fromYear: '=',
       toYear: '=',
       dayBeforeMonth: '=',
-      tryDateInput: '='
+      tryDateInput: '=',
+      brAttributes: '='
     },
     controller: DatePickerController,
     controllerAs: 'ctrl',
