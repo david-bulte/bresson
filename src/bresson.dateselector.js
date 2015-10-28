@@ -1,10 +1,10 @@
 'use strict';
 
-function DatePickerDirective() {
+function DateSelectorDirective() {
 
   return {
     restrict: 'E',
-    templateUrl: 'templates/datepicker.html',
+    templateUrl: 'templates/dateselector.html',
     scope: {
       modelDate: '=date',
       fromYear: '=',
@@ -13,14 +13,14 @@ function DatePickerDirective() {
       tryDateInput: '=',
       brAttributes: '='
     },
-    controller: DatePickerController,
+    controller: DateSelectorController,
     controllerAs: 'ctrl',
     bindToController: true
   };
 
 }
 
-function DatePickerController() {
+function DateSelectorController() {
 
   this.viaDateInput = (this.tryDateInput === undefined || this.tryDateInput === true) && dateInputSupported();
   var _fromYear = this.fromYear;
@@ -93,7 +93,7 @@ function daysInMonth(month, year) {
 }
 
 //cf. http://stackoverflow.com/questions/10193294/how-can-i-tell-if-a-browser-supports-input-type-date
-function dateInputSupported() {
+function dateSelectorSupported() {
   var input = document.createElement('input');
   input.setAttribute('type','date');
 

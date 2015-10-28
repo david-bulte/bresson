@@ -2,7 +2,7 @@
 
 function Config($templateCache) {
 
-  $templateCache.put('templates/datepicker.html',
+  $templateCache.put('templates/dateselector.html',
     '<any ng-switch="ctrl.viaDateInput">' +
 
       '<input type="date" ng-model="ctrl.modelDate" ng-switch-when="true" class="{{ctrl.brAttributes.class}}" placeholder="{{ctrl.brAttributes.placeholder}}">' +
