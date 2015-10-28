@@ -35,7 +35,7 @@ function DateSelectorController() {
   }
 
   if (_fromYear && this.modelDate && (this.modelDate.getFullYear() < _fromYear || this.modelDate.getFullYear() > _toYear)) {
-    throw 'bresson: given modelDate does not fall between given fromYear and toYear';
+    throw 'bresson: given date does not fall between given fromYear and toYear';
   }
 
   if (!this.modelDate) {
