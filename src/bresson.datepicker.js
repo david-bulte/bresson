@@ -23,16 +23,18 @@ function DatePickerDirective() {
 function DatePickerController() {
 
   this.viaDateInput = (this.tryDateInput === undefined || this.tryDateInput === true) && dateInputSupported();
+  var _fromYear = this.fromYear;
+  var _toYear = this.toYear;
 
   if (this.viaDateInput) {
     return;
   }
 
-  if (!this.fromYear != !this.toYear) {
+  if (!_fromYear != !_toYear) {
     throw 'bresson: when specifying fromYear you should als specify toYear';
   }
 
-  if (this.fromYear && this.modelDate && (this.modelDate.getFullYear() < this.fromYear || this.modelDate.getFullYear() > this.toYear)) {
+  if (_fromYear && this.modelDate && (this.modelDate.getFullYear() < _fromYear || this.modelDate.getFullYear() > _toYear)) {
     throw 'bresson: given modelDate does not fall between given fromYear and toYear';
   }
 
@@ -40,9 +42,9 @@ function DatePickerController() {
     this.modelDate = new Date();
   }
 
-  if (!this.fromYear) {
-    this.fromYear = this.modelDate.getFullYear() - 50;
-    this.toYear = this.modelDate.getFullYear() + 50;
+  if (!_fromYear) {
+    _fromYear = this.modelDate.getFullYear() - 50;
+    _toYear = this.modelDate.getFullYear() + 50;
   }
 
   this.viewDate = {
@@ -56,7 +58,7 @@ function DatePickerController() {
 
   this.days = options(1, daysInMonth(this.modelDate.getMonth() + 1, this.modelDate.getFullYear()));
   this.months = options(1, 12);
-  this.years = options(this.fromYear, this.toYear);
+  this.years = options(_fromYear, _toYear);
 
   if (this.dayBeforeMonth === undefined) {
     var now = new Date(Date.UTC(1972, 5, 9, 0, 0));
