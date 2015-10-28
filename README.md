@@ -32,17 +32,15 @@ In your index.html:
 In your template page:
 
 ```html
-<bresson-datepicker model-date="ctrl.currentDate"/>
+<br-date-selector date="ctrl.currentDate"/>
 ```
-
-Done.
 
 ## Documentation
 
 In its simplest form, you use it like so:
 
 ```html
-<bresson-datepicker model-date="ctrl.currentDate"/>
+<br-date-selector date="ctrl.currentDate"/>
 ```
 
 Note that *if* the browser supports HTML5's date input, that one will be used, otherwise we'll fallback to the
@@ -50,17 +48,17 @@ bresson date selector. Should you prefer to always use the fallback, you should 
 attribute to false:
 
 ```html
-<bresson-datepicker model-date="ctrl.currentDate" try-date-input="false"/>
+<br-date-selector date="ctrl.currentDate" try-date-input="false"/>
 ```
 
 By default, the 'years' select will offer 100 years, 50 before and 50 after the given modelDate. You can change this
 by specifying a 'fromYear' and 'toYear' attribute:
 
 ```html
-<bresson-datepicker model-date="ctrl.currentDate" 
-                    try-date-input="false"
-                    from-year="2000" 
-                    to-year="2100"/>
+<br-date-selector date="ctrl.currentDate" 
+                  try-date-input="false"
+                  from-year="2000" 
+                  to-year="2100"/>
 ```
 
 Note that it's not possible to specify only 1 of these attributes. If you specify one, you have to specify the 
@@ -70,10 +68,18 @@ The order of the select boxes, i.e. of the day and month selects, is defined by 
 you'd like to override this, you can pass the 'dayBeforeMonth' attribute:
 
 ```html
-<bresson-datepicker model-date="ctrl.currentDate" 
-                    try-date-input="false"
-                    day-before-month="true"/>
+<br-date-selector date="ctrl.currentDate" 
+                  try-date-input="false"
+                  day-before-month="true"/>
 ```
+
+Finally you can also pass a css class and a placeholder (for the default date input) like so:
+
+```html
+<br-date-selector date="ctrl.currentDate" 
+                  br-attributes="{'class' : 'required', 'placeholder' : 'reservation date'}"/>
+```
+
 
 ## Examples
 
