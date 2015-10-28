@@ -76,7 +76,7 @@ function DateSelectorController() {
   }
 
   if (_fromYear && this.modelDate && (this.modelDate.getFullYear() < _fromYear || this.modelDate.getFullYear() > _toYear)) {
-    throw 'bresson: given modelDate does not fall between given fromYear and toYear';
+    throw 'bresson: given date does not fall between given fromYear and toYear';
   }
 
   if (!this.modelDate) {
@@ -134,7 +134,7 @@ function daysInMonth(month, year) {
 }
 
 //cf. http://stackoverflow.com/questions/10193294/how-can-i-tell-if-a-browser-supports-input-type-date
-function dateSelectorSupported() {
+function dateInputSupported() {
   var input = document.createElement('input');
   input.setAttribute('type','date');
 
