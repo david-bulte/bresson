@@ -86,11 +86,12 @@ Finally you can also pass a css class and a placeholder (for the default date in
 <p data-height="268" data-theme-id="0" data-slug-hash="WQzRaa" data-default-tab="result" data-user="david_bulte" class='codepen'>See the Pen <a href='http://codepen.io/david_bulte/pen/WQzRaa/'>Using bresson dateselector</a> by David (<a href='http://codepen.io/david_bulte'>@david_bulte</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
+<!--
+
 ## Robert Bresson
 
 [![Robert Bresson](https://upload.wikimedia.org/wikipedia/commons/1/19/Robertbressonportrait.png)][bresson]
 
-<!--
 [Robert Bresson][bresson] was a French film maker, member of the Nouvelle Vague. 
 [Pickpocket][pickpocket], his masterpiece, is a minimalistic account of 
 Ken Loach, Dogma
