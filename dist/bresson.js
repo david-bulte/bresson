@@ -1,6 +1,6 @@
 /**
  * bresson
- * @version v0.0.1 - 2015-10-28
+ * @version v0.0.1 - 2017-05-24
  * @link https://github.com/david-bulte/bresson
  * @author  <>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -111,6 +111,10 @@ function DateSelectorController($scope) {
     }
   });
 
+  $scope.$watch('ctrl.modelDate', function(newVal) {
+      setViewVariables.call(self, newVal);
+  });
+
   this.dayChanged = function () {
     this.modelDate = this.viewDate.toDate();
   };
@@ -149,4 +153,30 @@ function dateInputSupported() {
   input.setAttribute('value', notADateValue);
 
   return !(input.value === notADateValue);
+}
+
+function setViewVariables(date) {
+    if (date) {
+        this.modelDate = date;
+    } else {
+        this.modelDate = new Date();
+    }
+
+    if (!this._fromYear) {
+        this._fromYear = this.modelDate.getFullYear() - 50;
+        this._toYear = this.modelDate.getFullYear() + 50;
+    }
+
+    this.viewDate = {
+        day: {id: this.modelDate.getDate(), label: this.modelDate.getDate()},
+        month: {id: this.modelDate.getMonth() + 1, label: this.modelDate.getMonth() + 1},
+        year: {id: this.modelDate.getFullYear(), label: this.modelDate.getFullYear()}
+    };
+    this.viewDate.toDate = function () {
+        return (this.day && this.month && this.year) ? new Date(this.year.id, this.month.id - 1, this.day.id) : null;
+    }.bind(this.viewDate);
+
+    this.days = options(1, daysInMonth(this.modelDate.getMonth() + 1, this.modelDate.getFullYear()));
+    this.months = options(1, 12);
+    this.years = options(this._fromYear, this._toYear);
 }
